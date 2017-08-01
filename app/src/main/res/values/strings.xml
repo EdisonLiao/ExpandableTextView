@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">etv</string>
+    <string name="poem">I shall ever try to keep my body pure, knowing that thy living touch is upon all my limbs. I shall ever try to keep all untruths out from my thoughts, knowing that thou art that truth which has kindled the light of reason in my mind. I shall ever try to drive all evils away from my heart and keep my love in flower, knowing that thou hast thy seat in the inmost shrine of my heart. And it shall be my endeavour to reveal thee in my actions, knowing it is thy power gives me strength to act.</string>
+    <string name="longText">Oh what a girl\nI wish you had another sister\nFor me\nI’d take her to the park\nWhile you were at work\n\nHow many kinds of people do you think there really are\nFor me?\nEnough to fill a room\nEnough to fill a mall\n\nOne sunset falls on the sea\nYou are not crying\nOh what a girl\nI wish we had a conversation\nFace to face\n\'cause when you speak\nYou speak in waves\n\nOh Argentina</string>
+
+    <string name="zh_poem">用高度凝练的语言，形象表达作者丰富情感，集中反映社会生活并具有一定节奏和韵律的文学体裁。</string>
+    <string name="zh_poem_short">文学体裁。</string>
+</resources>
