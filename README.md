@@ -1,5 +1,7 @@
 # ExpandableTextView
 
+ExpandableTextView support Horizontal and Vertical
+
 ## Usage:
 
 ### 1. Add it in your root build.gradle at the end of repositories:
@@ -17,7 +19,7 @@ allprojects {
 
 ```
 dependencies {
-	
+	compile 'com.github.frendyxzc:ExpandableTextView:0.0.1'
 }
 ```
 
