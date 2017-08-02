@@ -15,4 +15,15 @@
         app:text="@string/zh_poem">
     </vip.frendy.textview.ExpandableTextView>
 
+
+    <vip.frendy.textview.ExpandableTextView
+        android:id="@+id/etv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:expandDrawable="@drawable/show"
+        app:collapseDrawable="@drawable/close_show"
+        app:text="@string/poem">
+    </vip.frendy.textview.ExpandableTextView>
+
 </LinearLayout>

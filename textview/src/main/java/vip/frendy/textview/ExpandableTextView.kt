@@ -124,4 +124,11 @@ class ExpandableTextView @JvmOverloads constructor(
         lp?.width = LayoutParams.MATCH_PARENT
         mTextView?.layoutParams = lp
     }
+
+    fun setToggleSize(width: Int, height: Int) {
+        val lp = mToggle?.layoutParams
+        lp?.width = width
+        lp?.height = height
+        mToggle?.layoutParams = lp
+    }
 }
