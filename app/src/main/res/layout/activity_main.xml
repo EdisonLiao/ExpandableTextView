@@ -9,6 +9,7 @@
     tools:context="vip.frendy.etv.MainActivity">
 
     <vip.frendy.textview.ExpandableTextView
+        android:id="@+id/etv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:text="@string/zh_poem">

@@ -20,27 +20,29 @@ class ExpandableTextView @JvmOverloads constructor(
 
     internal var mTextView: TextView? = null
     internal var mToggle: ImageButton? = null
+    internal var mLayout: LinearLayout? = null
 
     private val LIMIT_LINE = 1
 
     private var isExpanded = false
 
-    private var collapseDrawable: Drawable? = null
-    private var expandDrawable: Drawable? = null
-    private var text: String? = null
+    private var mCollapseDrawable: Drawable? = null
+    private var mExpandDrawable: Drawable? = null
+    private var mText: String? = null
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableTextView)
-        expandDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_expandDrawable)
-        collapseDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_collapseDrawable)
-        text = typedArray.getString(R.styleable.ExpandableTextView_text)
+        mExpandDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_expandDrawable)
+        mCollapseDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_collapseDrawable)
+        mText = typedArray.getString(R.styleable.ExpandableTextView_text)
 
         val view = View.inflate(context, R.layout.text_view_expandable, this)
         mTextView = view.findViewById(R.id.text) as TextView
         mToggle = view.findViewById(R.id.toggle) as ImageButton
+        mLayout = view.findViewById(R.id.layout) as LinearLayout
 
         isExpanded = false
-        if(text != null) mTextView?.text = text
+        if(mText != null) mTextView?.text = mText
         setToggleDrawable(isExpanded)
 
         mTextView?.setOnClickListener(this)
@@ -94,17 +96,32 @@ class ExpandableTextView @JvmOverloads constructor(
 
     private fun setToggleDrawable(expanded: Boolean) {
         if(expanded) {
-            if(collapseDrawable != null) {
-                mToggle?.setImageDrawable(collapseDrawable)
+            if(mCollapseDrawable != null) {
+                mToggle?.setImageDrawable(mCollapseDrawable)
             } else {
                 mToggle?.setImageResource(android.R.drawable.arrow_up_float)
             }
         } else {
-            if(expandDrawable != null) {
-                mToggle?.setImageDrawable(expandDrawable)
+            if(mExpandDrawable != null) {
+                mToggle?.setImageDrawable(mExpandDrawable)
             } else {
                 mToggle?.setImageResource(android.R.drawable.arrow_down_float)
             }
         }
+    }
+
+    fun setText(text: String) {
+        mTextView?.text = text
+        mText = text
+    }
+
+    fun getText(): String? = mText
+
+    override fun setOrientation(orientation: Int) {
+        mLayout?.orientation = orientation
+
+        val lp = mTextView?.layoutParams
+        lp?.width = LayoutParams.MATCH_PARENT
+        mTextView?.layoutParams = lp
     }
 }
