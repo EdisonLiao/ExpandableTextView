@@ -19,7 +19,7 @@ allprojects {
 
 ```
 dependencies {
-	compile 'com.github.frendyxzc:ExpandableTextView:0.0.1'
+	compile 'com.github.frendyxzc:ExpandableTextView:0.0.3'
 }
 ```
 
