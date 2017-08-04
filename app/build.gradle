@@ -33,7 +33,7 @@ dependencies {
     compile "org.jetbrains.anko:anko-common:$anko_version"
 
     compile project(':textview')
-//    compile 'com.github.frendyxzc:ExpandableTextView:0.0.4'
+//    compile 'com.github.frendyxzc:ExpandableTextView:0.0.5'
 }
 repositories {
     mavenCentral()

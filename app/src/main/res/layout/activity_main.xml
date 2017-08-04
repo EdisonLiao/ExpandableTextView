@@ -12,6 +12,7 @@
         android:id="@+id/etv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:text_color="@color/colorAccent"
         app:text="@string/zh_poem">
     </vip.frendy.textview.ExpandableTextView>
 
@@ -21,8 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        app:expandDrawable="@drawable/show"
-        app:collapseDrawable="@drawable/close_show"
+        app:expand_drawable="@drawable/show"
+        app:collapse_drawable="@drawable/close_show"
+        app:collapse_lines="3"
+        app:toggle_width="32"
+        app:toggle_height="32"
+        app:text_size="16"
+        app:text_color="@color/colorPrimaryDark"
         app:text="@string/poem">
     </vip.frendy.textview.ExpandableTextView>
 

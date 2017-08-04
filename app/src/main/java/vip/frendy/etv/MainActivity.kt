@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 //        etv.setText("测试")
         etv.orientation = LinearLayout.VERTICAL
-
-        etv_1.setToggleSize(32, 32)
     }
 
     override fun onClick(v: View) {

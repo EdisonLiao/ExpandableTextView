@@ -22,19 +22,28 @@ class ExpandableTextView @JvmOverloads constructor(
     internal var mToggle: ImageButton? = null
     internal var mLayout: LinearLayout? = null
 
-    private val LIMIT_LINE = 1
+    private var COLLAPSE_LINE = 1
 
     private var isExpanded = false
 
     private var mCollapseDrawable: Drawable? = null
     private var mExpandDrawable: Drawable? = null
     private var mText: String? = null
+    private var mTextSize: Float = 14.0F
+    private var mTextColor: Int = android.R.color.black
+    private var mToggleWidth: Int = 32
+    private var mToggleHeight: Int = 32
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableTextView)
-        mExpandDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_expandDrawable)
-        mCollapseDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_collapseDrawable)
+        mExpandDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_expand_drawable)
+        mCollapseDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_collapse_drawable)
         mText = typedArray.getString(R.styleable.ExpandableTextView_text)
+        mTextSize = typedArray.getFloat(R.styleable.ExpandableTextView_text_size, 14.0F)
+        mTextColor = typedArray.getColor(R.styleable.ExpandableTextView_text_color, android.R.color.black)
+        mToggleWidth = typedArray.getInt(R.styleable.ExpandableTextView_toggle_width, 32)
+        mToggleHeight = typedArray.getInt(R.styleable.ExpandableTextView_toggle_height, 32)
+        COLLAPSE_LINE = typedArray.getInt(R.styleable.ExpandableTextView_collapse_lines, 1)
 
         val view = View.inflate(context, R.layout.text_view_expandable, this)
         mTextView = view.findViewById(R.id.text) as TextView
@@ -43,7 +52,10 @@ class ExpandableTextView @JvmOverloads constructor(
 
         isExpanded = false
         if(mText != null) mTextView?.text = mText
+        mTextView?.textSize = mTextSize
+        mTextView?.setTextColor(mTextColor)
         setToggleDrawable(isExpanded)
+        setToggleSize(mToggleWidth, mToggleHeight)
 
         mTextView?.setOnClickListener(this)
         mToggle?.setOnClickListener(this)
@@ -60,12 +72,12 @@ class ExpandableTextView @JvmOverloads constructor(
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        if(mTextView != null && mTextView!!.lineCount <= LIMIT_LINE) {
+        if(mTextView != null && mTextView!!.lineCount <= COLLAPSE_LINE) {
             return
         }
 
         if(!isExpanded) {
-            mTextView?.maxLines = LIMIT_LINE
+            mTextView?.maxLines = COLLAPSE_LINE
         }
         mToggle?.visibility = View.VISIBLE
 
@@ -77,7 +89,7 @@ class ExpandableTextView @JvmOverloads constructor(
             R.id.text, R.id.toggle -> {
                 if(isExpanded) {
                     isExpanded = false
-                    mTextView?.maxLines = LIMIT_LINE
+                    mTextView?.maxLines = COLLAPSE_LINE
                     setToggleDrawable(isExpanded)
 
                     val anim = AnimationUtils.loadAnimation(context, R.anim.tv_fade_in)

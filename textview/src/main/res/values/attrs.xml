@@ -2,7 +2,12 @@
 <resources>
     <declare-styleable name="ExpandableTextView">
         <attr name="text" format="string" />
-        <attr name="expandDrawable" format="reference" />
-        <attr name="collapseDrawable" format="reference" />
+        <attr name="text_size" format="float" />
+        <attr name="text_color" format="color" />
+        <attr name="toggle_width" format="integer" />
+        <attr name="toggle_height" format="integer" />
+        <attr name="collapse_lines" format="integer" />
+        <attr name="expand_drawable" format="reference" />
+        <attr name="collapse_drawable" format="reference" />
     </declare-styleable>
 </resources>
